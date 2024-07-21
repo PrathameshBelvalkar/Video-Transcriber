@@ -1,4 +1,6 @@
-![LOGO](samples/logo.png)
+<p align="center">
+  <img src="samples/logo.png" alt="LOGO" />
+</p>
 # Video Transcriber
 
 ## Overview
