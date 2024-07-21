@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="samples/logo.png" alt="LOGO" />
+  <img src="samples/logo1.png" alt="LOGO" />
 </p>
 # Video Transcriber
 
