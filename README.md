@@ -45,4 +45,28 @@ python GUI.py
 ## File Naming Convention
 The generated subtitles file will be named according to the video file name with the .srt extension. For example, if the video file is named `example.mp4`, the subtitle file will be `example.srt`.
 
+## Future Scopes
+
+Here are some potential enhancements and features that could be added to the Video Transcriber in future updates:
+
+1. **Support for Additional File Formats:**
+   - Extend support to additional video and audio formats beyond the current ones. This may include formats like `.mov`, `.flv`, or `.wav`.
+
+2. **Language Detection and Support:**
+   - Integrate automatic language detection and support for multiple languages. Enhance the Whisper model integration to handle various languages more efficiently.
+
+
+3. **Improved User Interface:**
+   - Enhance the graphical user interface (GUI) with features such as:
+     - Drag-and-drop file selection.
+     - Progress indicators for audio extraction and transcription.
+     - Customizable settings for subtitle appearance (e.g., font size, color).
+
+
+4. **Export Options:**
+   - Provide additional subtitle export options, such as formats like `.vtt` or `.ass`. Add features to customize subtitle formatting and timing.
+
+Feel free to contribute to the project or suggest additional features and improvements. Your feedback is valuable for making the Video Transcriber tool better!
+
+
 
