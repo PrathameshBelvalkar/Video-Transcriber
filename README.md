@@ -1,3 +1,4 @@
+![LOGO](samples/logo.png)
 # Video Transcriber
 
 ## Overview
@@ -10,6 +11,8 @@ The Video Transcriber is a Python application that transcribes audio from video 
 - Transcribes audio to text using Whisper.
 - Generates SRT subtitles file.
 
+![Screenshot of the Video Transcriber - Image 1](samples/sample.png)
+*Example of the main interface.*
 ## Requirements
 
 Ensure you have Python installed. The following Python libraries are required:
@@ -67,6 +70,3 @@ Here are some potential enhancements and features that could be added to the Vid
    - Provide additional subtitle export options, such as formats like `.vtt` or `.ass`. Add features to customize subtitle formatting and timing.
 
 Feel free to contribute to the project or suggest additional features and improvements. Your feedback is valuable for making the Video Transcriber tool better!
-
-
-
