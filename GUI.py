@@ -28,7 +28,6 @@ class VideoTranscriber:
             text = segment["text"]
             self.subtitles.append((start, end, text))
             subtitle_text += f"{self.format_timestamp(start)} --> {self.format_timestamp(end)}: {text}\n"
-            # Update the progress and text area with the final subtitle text
             self.progress_callback(subtitle_text, idx + 1 == total_segments)
         
         print('Video transcription complete')
@@ -50,7 +49,7 @@ class VideoTranscriber:
                 srt_file.write(f"{self.format_timestamp(start)} --> {self.format_timestamp(end)}\n")
                 srt_file.write(f"{text}\n\n")
         print(f'SRT file generated at {srt_path}')
-        # Delete the audio file after generating SRT
+       
         if os.path.exists(self.audio_path):
             os.remove(self.audio_path)
             print(f'Deleted audio file: {self.audio_path}')
@@ -74,29 +73,24 @@ class App:
         self.create_widgets()
 
     def create_widgets(self):
-        # Frame for the input fields and buttons
         self.frame = tk.Frame(self.root)
         self.frame.pack(fill="both", expand=True, padx=10, pady=10)
 
-        # Choose file
         self.file_label = tk.Label(self.frame, text="Choose File")
         self.file_label.grid(row=0, column=0, pady=5, sticky="w")
         
         self.file_button = tk.Button(self.frame, text="Browse", command=self.select_file)
         self.file_button.grid(row=0, column=1, pady=5, sticky="e")
 
-        # Text area for subtitles
         self.text_area = tk.Text(self.frame, wrap="word", height=15, width=70, state="disabled")
         self.text_area.grid(row=1, column=0, columnspan=2, pady=10)
 
-        # Process button
         self.process_button = tk.Button(self.frame, text="Process", command=self.process_video)
         self.process_button.grid(row=2, column=0, columnspan=2, pady=10)
 
     def select_file(self):
         self.video_path = filedialog.askopenfilename(filetypes=[("Video files", "*.mp4 *.avi *.mkv")])
         if self.video_path:
-            # File name display removed as requested
             pass
 
     def process_video(self):
@@ -104,7 +98,6 @@ class App:
             tk.messagebox.showwarning("No file selected", "Please select a video file first.")
             return
 
-        # Disable the process button and update the text area with initial message
         self.process_button.config(state=tk.DISABLED)
         self.text_area.config(state="normal")
         self.text_area.delete('1.0', tk.END)
@@ -118,23 +111,20 @@ class App:
     def run_transcription(self, transcriber):
         transcriber.extract_audio()
         transcriber.transcribe_video()
-        # Re-enable the process button and show completion message
         self.process_button.config(state=tk.NORMAL)
         tk.messagebox.showinfo("Process Complete", "Transcription and SRT generation completed successfully.")
         print(f'Subtitle file path: {os.path.join(os.path.dirname(self.video_path), f"{os.path.splitext(os.path.basename(self.video_path))[0]}.srt")}')
 
     def update_text_area(self, subtitle_text, done=False):
         if done:
-            # Replace "processing" message with the final subtitles
             self.text_area.config(state="normal")
             self.text_area.delete('1.0', tk.END)
             self.text_area.insert(tk.END, subtitle_text)
             self.text_area.config(state="disabled")
         else:
-            # Append processing message
             self.text_area.config(state="normal")
             self.text_area.insert(tk.END, subtitle_text)
-            self.text_area.yview(tk.END)  # Scroll to the end
+            self.text_area.yview(tk.END)  
             self.text_area.config(state="disabled")
 
 if __name__ == "__main__":
